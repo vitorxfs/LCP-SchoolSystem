@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MIcro/Documents/NetBeansProjects/SistemaEscola/src/sistemaescola/SistemaEscola.java</file>
-            <file>file:/C:/Users/MIcro/Documents/NetBeansProjects/SistemaEscola/src/sistemaescola/TelaCadastroProfessor.java</file>
-            <file>file:/C:/Users/MIcro/Documents/NetBeansProjects/SistemaEscola/src/sistemaescola/TelaEscolhaCadastro.java</file>
-            <file>file:/C:/Users/MIcro/Documents/NetBeansProjects/SistemaEscola/src/sistemaescola/TelaLogin.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaCadastroAluno.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Professor.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/ProfessorUsuario.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/AlunoDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/ProfessorUsuarioDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaEscolhaCadastro.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaLogin.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/ProfessorDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/AlunoUsuario.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/AlunoUsuarioDao.java</file>
         </group>
     </open-files>
 </project-private>
