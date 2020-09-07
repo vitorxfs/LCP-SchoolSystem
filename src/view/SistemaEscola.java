@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaescola;
+package view;
 
 /**
  *
@@ -16,6 +16,7 @@ public class SistemaEscola {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new TelaLogin().setVisible(true);
         
     }
     
