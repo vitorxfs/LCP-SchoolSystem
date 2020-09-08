@@ -7,7 +7,9 @@ package view;
 
 import javax.swing.JOptionPane;
 import model.bean.Aluno;
+import model.bean.Turma;
 import model.dao.AlunoDao;
+import model.dao.TurmaDao;
 
 /**
  *
@@ -19,8 +21,17 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
      * Creates new form TelaCadastroAluno
      */
     public TelaCadastroAluno() {
+        //this.turma = (Turma) cb_series.getSelectedItem();
         initComponents();
+        
+        TurmaDao dao = new TurmaDao();
+        
+        for(Turma t: dao.read()){
+            cb_series.addItem(t);
+        }
+        
     }
+    
     
 
     /**
@@ -75,7 +86,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel5.setText("Turma: ");
 
-        cb_series.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6°Ano A", "6°Ano B", "7°Ano A", "7°Ano B", "8°Ano A", "8°Ano B", "8°Ano C" }));
+        cb_series.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cb_series.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_seriesActionPerformed(evt);
@@ -189,10 +200,10 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
             
         }
     }
-    private void throwsException1(int n) throws Exception{
-        if(n == -1)
+   /* private void throwsException1(String n) throws Exception{
+        if(n.equals(" "))
             throw new Exception("Erro - Nenhuma turma selecionada");
-    }
+    }*/
     private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nomeActionPerformed
@@ -214,8 +225,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         
         Aluno a = new Aluno();
         AlunoDao dao = new AlunoDao();
+        
         boolean flag1 = false, flag2 = false;
-           
+        //Turma turma = (Turma) cb_series.getSelectedItem();
+        
+        //Tratando as exceções em caso de algum campo estar em branco   
         try{
             String nome = tf_nome.getText();
             if(nome.isEmpty() == true){
@@ -238,18 +252,19 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Erro - Campo ra em branco", "ERRO", 0);
             flag2 = true;
         }
-        
-        try{
+       
+        /*
+       try{
            
-            int indiceSelecionado = cb_series.getSelectedIndex();
-            if(indiceSelecionado == 0){
+           String indiceSelecionado = (String) cb_series.getSelectedItem();
+            if(indiceSelecionado.equals(" ")){
                 throwsException1(indiceSelecionado);
             }
         }
         catch(Exception indiceSelecionado){
             JOptionPane.showMessageDialog(null,"Erro - Selecione uma Turma", "ERRO", 0);
             flag2 = true;
-        }
+        }*/
         
         try{
             String login = tf_login.getText();
@@ -257,7 +272,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 throwsException(login);
             }
         }
-        catch(Exception ra){
+        catch(Exception login){
             JOptionPane.showMessageDialog(null,"Erro - Campo login em branco", "ERRO", 0);
             flag2 = true;
         }
@@ -268,7 +283,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 throwsException(senha);
             }
         }
-        catch(Exception ra){
+        catch(Exception senha){
             JOptionPane.showMessageDialog(null,"Erro - Campo senha em branco", "ERRO", 0);
             flag2 = true;
         }
@@ -276,12 +291,14 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         
         a.setNome(tf_nome.getText());
         a.setRa(Integer.parseInt(tf_ra.getText()));
+        a.setTurma_id(cb_series.getSelectedIndex());
         a.setLogin(tf_login.getText());
         a.setSenha(tf_senha.getText());
         
         dao.create(a);
                
-               
+               int i = cb_series.getSelectedIndex();
+               System.out.printf(" %d ", i);
         
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
@@ -326,7 +343,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar;
-    private javax.swing.JComboBox<String> cb_series;
+    private javax.swing.JComboBox<Object> cb_series;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

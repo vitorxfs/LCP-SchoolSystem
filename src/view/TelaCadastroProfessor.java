@@ -5,8 +5,13 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.bean.Professor;
+import model.bean.Turma;
 import model.dao.ProfessorDao;
+import model.dao.TurmaDao;
+import model.dao.DisciplinaDao;
+import model.bean.Disciplina;
 
 /**
  *
@@ -19,6 +24,19 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
      */
     public TelaCadastroProfessor() {
         initComponents();
+        TurmaDao dao = new TurmaDao();
+        DisciplinaDao d_dao = new DisciplinaDao();
+        
+        for(Turma t: dao.read()){
+            cb_series.addItem(t);
+        }
+        
+        for(Disciplina d: d_dao.read()){
+            cb_disc.addItem(d);
+        }
+        
+        
+        
     }
 
     /**
@@ -36,10 +54,10 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         tf_nome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tf_email = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_series = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_disc = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         tf_login = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -72,10 +90,10 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6°Ano A", "6°Ano B", "7°Ano A", "7°Ano B", "8°Ano A", "8°Ano B", "8°Ano C" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cb_series.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cb_series.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cb_seriesActionPerformed(evt);
             }
         });
 
@@ -85,7 +103,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel6.setText("Disciplina lecionada:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemática", "Língua Portuguesa", "Ciências", "Geografia", "História", "Inglês" }));
+        cb_disc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel7.setText("Login:");
@@ -113,34 +131,30 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tf_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_disc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_series, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,11 +182,11 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cb_series, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cb_disc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +206,18 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ private void throwsException(String campo) throws Exception{
+        
+        if(campo.isEmpty()){
+            throw new Exception("Erro - Campo em branco");
+            
+        }
+    }
+    private void throwsException1(String n) throws Exception{
+        if(n.equals(" "))
+            throw new Exception("Erro - Nenhuma turma selecionada");
+    }
+    
     private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nomeActionPerformed
@@ -201,10 +226,10 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_emailActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cb_seriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_seriesActionPerformed
         // TODO add your handling code here:
        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cb_seriesActionPerformed
 
     private void tf_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_loginActionPerformed
         // TODO add your handling code here:
@@ -215,11 +240,82 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         
         Professor p = new Professor();
         ProfessorDao dao = new ProfessorDao();
+        //Turma turma = (Turma) cb_series.getSelectedItem();
+        
+        boolean flag1 = false, flag2 = false;
+           
+        try{
+            String nome = tf_nome.getText();
+            if(nome.isEmpty() == true){
+                throwsException(nome);
+            }
+            
+        }
+        catch(Exception nome){
+            JOptionPane.showMessageDialog(null,"Erro - Campo Nome em branco", "ERRO", 0);
+            flag1 = true;
+        }
+        
+        try{
+            String ra = tf_email.getText();
+            if(ra.isEmpty() == true){
+                throwsException(ra);
+            }
+        }
+        catch(Exception email){
+            JOptionPane.showMessageDialog(null,"Erro - Campo email em branco", "ERRO", 0);
+            flag2 = true;
+        }
+        
+        try{
+           
+           String indiceSelecionado = (String) cb_series.getSelectedItem();
+            if(indiceSelecionado.equals(" ")){
+                throwsException1(indiceSelecionado);
+            }
+        }
+        catch(Exception indiceSelecionado){
+            JOptionPane.showMessageDialog(null,"Erro - Selecione uma Turma", "ERRO", 0);
+            flag2 = true;
+        }
+        try{
+           
+            String indiceSelecionado = (String) cb_disc.getSelectedItem();
+           
+            if(indiceSelecionado.equals(" ") ){
+                throwsException1(indiceSelecionado);
+            }
+        }
+        catch(Exception indiceSelecionado){
+            JOptionPane.showMessageDialog(null,"Erro - Selecione uma Disicplina", "ERRO", 0);
+            flag2 = true;
+        }
+        try{
+            String login = tf_login.getText();
+            if(login.isEmpty() == true){
+                throwsException(login);
+            }
+        }
+        catch(Exception login){
+            JOptionPane.showMessageDialog(null,"Erro - Campo login em branco", "ERRO", 0);
+            flag2 = true;
+        }
+        
+        try{
+            String senha = tf_senha.getText();
+            if(senha.isEmpty() == true){
+                throwsException(senha);
+            }
+        }
+        catch(Exception senha){
+            JOptionPane.showMessageDialog(null,"Erro - Campo senha em branco", "ERRO", 0);
+            flag2 = true;
+        }
         p.setNome(tf_nome.getText());
         p.setEmail(tf_email.getText());
         p.setLogin(tf_login.getText());
         p.setSenha(tf_senha.getText());
-        p.setSenha(tf_senha.getText());
+        
         
         dao.create(p);
     }//GEN-LAST:event_bt_cadastrarActionPerformed
@@ -261,8 +357,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<Object> cb_disc;
+    private javax.swing.JComboBox<Object> cb_series;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

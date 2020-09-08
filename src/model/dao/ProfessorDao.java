@@ -35,11 +35,11 @@ public class ProfessorDao {
             
             stat.executeUpdate();
                     
-            JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Professor(a) cadastrado com sucesso!");
              
         
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, " Erro - Aluno não cadastrado");
+             JOptionPane.showMessageDialog(null, " Erro - Professor(a) não cadastrado");
         }
         finally{
             ConnectionFactory.closeConnection(con, stat);
