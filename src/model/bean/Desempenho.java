@@ -75,6 +75,7 @@ public class Desempenho {
 
     public void setNota_3bimestre(float nota_3bimestre) {
         this.nota_3bimestre = nota_3bimestre;
+
     }
 
     public float getMedia_final() {
