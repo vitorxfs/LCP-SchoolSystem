@@ -14,8 +14,7 @@ public class AlunoUsuario {
     private int id;
     private String login;
     private String senha;
-    //private int turma;
-
+   
     public int getId(){
         return id;
     }

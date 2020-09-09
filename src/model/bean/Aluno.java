@@ -14,7 +14,7 @@ public class Aluno {
     private String nome;
     private String login;
     private String senha;
-    private int turma_id;
+    
     
     /*public Aluno(){
         
@@ -58,12 +58,6 @@ public class Aluno {
         this.senha = senha;
     }
     
-    public void setTurma_id(int turma_id){
-        this.turma_id = turma_id;
-    }
     
-    public int getTurma_id(){
-        return turma_id;
-    }
     
 }

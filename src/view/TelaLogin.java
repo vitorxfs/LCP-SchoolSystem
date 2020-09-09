@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import model.bean.Professor;
+import model.bean.Session;
 import model.dao.AlunoUsuarioDao;
 import model.dao.ProfessorUsuarioDao;
 
@@ -130,6 +132,14 @@ private static JLabel lb1;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_login, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(rb_aluno)
@@ -144,14 +154,6 @@ private static JLabel lb1;
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
                                 .addComponent(tf_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_login, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -255,8 +257,14 @@ private static JLabel lb1;
         }
         if(radio_prof){
             ProfessorUsuarioDao dao = new ProfessorUsuarioDao();
+            Professor prof = new Professor();
        
             if(dao.checkLogin(tf_login.getText(), tf_senha.getText())){
+                Session fazendoLogin = Session.getSession(0, dao.pegarId(tf_login.getText(), tf_senha.getText())); //getSession(tipo,id)
+                Session mesmaSessao = Session.getSession();
+                
+        
+                
                 new TelaProfessor().setVisible(true);
                 this.dispose();
             }else{
@@ -267,6 +275,11 @@ private static JLabel lb1;
             AlunoUsuarioDao dao = new AlunoUsuarioDao();
        
             if(dao.checkLogin(tf_login.getText(), tf_senha.getText())){
+                Session fazendoLogin = Session.getSession(0, dao.pegarId(tf_login.getText(), tf_senha.getText())); //getSession(tipo,id)
+                Session mesmaSessao = Session.getSession();
+                int n = mesmaSessao.getId();
+        
+                System.out.printf("%d deu certo", mesmaSessao.getId());
                 new TelaAluno().setVisible(true);
                 this.dispose();
             }else{

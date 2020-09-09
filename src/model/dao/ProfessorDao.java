@@ -25,13 +25,15 @@ public class ProfessorDao {
         PreparedStatement stat = null;
         
         try {
-            stat = con.prepareStatement("INSERT INTO professores (nome, email,login,senha) VALUES (?,?,?,?)");
+            stat = con.prepareStatement("INSERT INTO professores (nome, email,login,senha, turma_serie, disciplina) VALUES (?,?,?,?,?,?)");
             
             
             stat.setString(1, p.getNome());
             stat.setString(2, p.getEmail());
             stat.setString(3, p.getLogin());
             stat.setString(4, p.getSenha());
+            stat.setString(5, p.getTurma_serie());
+            stat.setString(6, p.getDiscplina());
             
             stat.executeUpdate();
                     

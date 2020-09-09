@@ -5,6 +5,13 @@
  */
 package view;
 
+import model.bean.Aluno;
+import model.bean.AlunoUsuario;
+import model.bean.Desempenho;
+import model.bean.Session;
+import model.dao.AlunoDao;
+import model.dao.DesempenhoDao;
+
 /**
  *
  * @author MIcro
@@ -16,6 +23,10 @@ public class TelaAluno extends javax.swing.JFrame {
      */
     public TelaAluno() {
         initComponents();
+        
+    
+        
+        
     }
 
     /**
@@ -62,8 +73,13 @@ public class TelaAluno extends javax.swing.JFrame {
         );
 
         jMenu2.setText("Boletim");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
-        jMenuItem2.setText("1°Bimestre");
+        jMenuItem2.setText("Ver Boletim");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -128,7 +144,36 @@ public class TelaAluno extends javax.swing.JFrame {
         InternalBoletim tela = new  InternalBoletim();
         jDesktopPane1.add(tela);
         tela.setVisible(true);
+        Session mesma  = Session.getSession();
+        int valor_id;
+        valor_id = mesma.getId();
+                
+          
+        Aluno a = new Aluno();
+        AlunoDao a_user = new AlunoDao();
+        
+        Desempenho d = new Desempenho();
+        DesempenhoDao d_dao = new DesempenhoDao();
+        
+       
+        
+        
+        d.setAluno_id(valor_id);
+        
+        //d_dao.read(d);
+        //System.out.printf(" %d aeeeee",n);
+        
+        
+        
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+       
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments

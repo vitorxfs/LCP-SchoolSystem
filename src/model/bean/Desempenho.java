@@ -17,7 +17,9 @@ public class Desempenho {
     public float nota_2bimestre;
     public float nota_3bimestre;
     public float nota_4bimestre;
-
+    public float media_final;
+    public float frequencia;
+    
     public float getNota_4bimestre() {
         return nota_4bimestre;
     }
@@ -25,8 +27,7 @@ public class Desempenho {
     public void setNota_4bimestre(float nota_4bimestre) {
         this.nota_4bimestre = nota_4bimestre;
     }
-    public float media_final;
-    public float frequencia;
+    
 
     public int getId() {
         return id;

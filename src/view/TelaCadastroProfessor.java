@@ -9,8 +9,7 @@ import javax.swing.JOptionPane;
 import model.bean.Professor;
 import model.bean.Turma;
 import model.dao.ProfessorDao;
-import model.dao.TurmaDao;
-import model.dao.DisciplinaDao;
+
 import model.bean.Disciplina;
 
 /**
@@ -24,17 +23,6 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
      */
     public TelaCadastroProfessor() {
         initComponents();
-        TurmaDao dao = new TurmaDao();
-        DisciplinaDao d_dao = new DisciplinaDao();
-        
-        for(Turma t: dao.read()){
-            cb_series.addItem(t);
-        }
-        
-        for(Disciplina d: d_dao.read()){
-            cb_disc.addItem(d);
-        }
-        
         
         
     }
@@ -90,7 +78,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
             }
         });
 
-        cb_series.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cb_series.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "6°Ano A", "6°Ano B", "6°Ano C", "7°Ano A", "7°Ano B", "8°Ano A", "8°Ano B", "9°Ano A", "9°Ano B" }));
         cb_series.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_seriesActionPerformed(evt);
@@ -103,7 +91,7 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel6.setText("Disciplina lecionada:");
 
-        cb_disc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cb_disc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Língua Portuguesa", "Matemática", "Ciências", "História", "Geografia", "Inglês", "Artes", "Educação Fisíca" }));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel7.setText("Login:");
@@ -315,6 +303,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
         p.setEmail(tf_email.getText());
         p.setLogin(tf_login.getText());
         p.setSenha(tf_senha.getText());
+        p.setTurma_serie((String)cb_series.getSelectedItem());
+        p.setDiscplina((String)cb_disc.getSelectedItem());
         
         
         dao.create(p);
@@ -357,8 +347,8 @@ public class TelaCadastroProfessor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar;
-    private javax.swing.JComboBox<Object> cb_disc;
-    private javax.swing.JComboBox<Object> cb_series;
+    private javax.swing.JComboBox<String> cb_disc;
+    private javax.swing.JComboBox<String> cb_series;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

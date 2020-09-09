@@ -45,5 +45,35 @@ public class ProfessorUsuarioDao {
         return check;
 
     }
+    
+    public int pegarId(String login, String senha) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int valor = 0;
+        
+
+        try {
+
+            stmt = con.prepareStatement("SELECT id FROM professores WHERE login = ? and senha = ?");
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                valor = rs.getInt("id");  
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfessorUsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return valor ;
+
+    }
 
 }

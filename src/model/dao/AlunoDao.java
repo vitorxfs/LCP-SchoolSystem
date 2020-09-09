@@ -25,12 +25,11 @@ public class AlunoDao {
         PreparedStatement stat = null;
         
         try {
-            stat = con.prepareStatement("INSERT INTO alunos (ra, nome,turma_id,login,senha) VALUES (?,?,?,?,? )");
+            stat = con.prepareStatement("INSERT INTO alunos (ra, nome,login,senha) VALUES (?,?,?,? )");
             stat.setInt(1,a.getRa());
             stat.setString(2, a.getNome());
-            stat.setInt(3, a.getTurma_id());
-            stat.setString(4, a.getLogin());
-            stat.setString(5, a.getSenha());
+            stat.setString(3, a.getLogin());
+            stat.setString(4, a.getSenha());
             
             stat.executeUpdate();
                     

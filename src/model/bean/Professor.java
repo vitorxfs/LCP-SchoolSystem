@@ -10,13 +10,16 @@ package model.bean;
  * @author MIcro
  */
 public class Professor {
-  
+    
+    private int id;
     private String nome;
     private String email;
     private String login;
     private String senha;
-    //private int turma;
+    private String turma_serie;
+    private String discplina;
 
+    
     public String getNome() {
         return nome;
     }
@@ -47,6 +50,30 @@ public class Professor {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getTurma_serie() {
+        return turma_serie;
+    }
+
+    public void setTurma_serie(String turma_serie) {
+        this.turma_serie = turma_serie;
+    }
+
+    public String getDiscplina() {
+        return discplina;
+    }
+
+    public void setDiscplina(String discplina) {
+        this.discplina = discplina;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     
