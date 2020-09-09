@@ -7,37 +7,57 @@ package model.bean;
 
 /**
  *
- * @author vitor
+ * @author MIcro
  */
 public class Turma {
-    private int serie;
-    private char letra;
-    public enum Periodo { MANHA, TARDE, NOITE };
-    private Periodo periodo;
+    private int id;
+    private String serie;
+    private String letra;
+    private String periodo;
+  
 
-    public int getSerie() {
+    public Turma(){
+    
+    }
+    public Turma(String serie){
+        this.serie = serie;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSerie() {
         return serie;
     }
 
-    public void setSerie(int serie) {
+    public void setSerie(String serie) {
         this.serie = serie;
     }
 
-    public char getLetra() {
+    public String getLetra() {
         return letra;
     }
 
-    public void setLetra(char letra) {
+    public void setLetra(String letra) {
         this.letra = letra;
     }
 
-    public Periodo getPeriodo() {
+    public String getPeriodo() {
         return periodo;
     }
 
-    public void setPeriodo(Periodo periodo) {
+    public void setPeriodo(String periodo) {
         this.periodo = periodo;
+    }
+   
+   
+    public String toString() {
+        return getSerie();
+        //return getLetra(); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
-

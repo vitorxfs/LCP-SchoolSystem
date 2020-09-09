@@ -32,15 +32,15 @@ public class InternalBoletim extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Língua Portuguesa", null, null, null, null},
-                {"Matemática", null, null, null, null},
-                {"Geografia", null, null, null, null},
-                {"Ciências", null, null, null, null},
-                {"História", null, null, null, null},
-                {"Inglês", null, null, null, null}
+                {"Língua Portuguesa", null, null, null, null, null, null},
+                {"Matemática", null, null, null, null, null, null},
+                {"Geografia", null, null, null, null, null, null},
+                {"Ciências", null, null, null, null, null, null},
+                {"História", null, null, null, null, null, null},
+                {"Inglês", null, null, null, null, null, null}
             },
             new String [] {
-                "Disciplinas", "Prova 1", "Prova 2", "Atividades", "Média"
+                "Disciplinas", "1° Bimestre", "2° Bimestre", "3° Bimestre", "4° Bimestre", "Média Final", "Frequência"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -50,7 +50,7 @@ public class InternalBoletim extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

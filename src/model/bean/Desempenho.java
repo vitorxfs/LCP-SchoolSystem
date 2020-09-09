@@ -7,18 +7,26 @@ package model.bean;
 
 /**
  *
- * @author vitor
+ * @author MIcro
  */
 public class Desempenho {
-    private int id;
-    private Aluno aluno;
-    private Disciplina disciplina;
-    private float nota_1b;
-    private float nota_2b;
-    private float nota_3b;
-    private float nota_4b;
-    private float media_final;
-    private float frequencia;
+    public int id;
+    public int aluno_id;
+    public int disciplina_id;
+    public float nota_1bimestre;
+    public float nota_2bimestre;
+    public float nota_3bimestre;
+    public float nota_4bimestre;
+
+    public float getNota_4bimestre() {
+        return nota_4bimestre;
+    }
+
+    public void setNota_4bimestre(float nota_4bimestre) {
+        this.nota_4bimestre = nota_4bimestre;
+    }
+    public float media_final;
+    public float frequencia;
 
     public int getId() {
         return id;
@@ -28,52 +36,45 @@ public class Desempenho {
         this.id = id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public int getAluno_id() {
+        return aluno_id;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAluno_id(int aluno_id) {
+        this.aluno_id = aluno_id;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public int getDisciplina_id() {
+        return disciplina_id;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setDisciplina_id(int disciplina_id) {
+        this.disciplina_id = disciplina_id;
     }
 
-    public float getNota_1b() {
-        return nota_1b;
+    public float getNota_1bimestre() {
+        return nota_1bimestre;
     }
 
-    public void setNota_1b(float nota_1b) {
-        this.nota_1b = nota_1b;
+    public void setNota_1bimestre(float nota_1bimestre) {
+        this.nota_1bimestre = nota_1bimestre;
     }
 
-    public float getNota_2b() {
-        return nota_2b;
+    public float getNota_2bimestre() {
+        return nota_2bimestre;
     }
 
-    public void setNota_2b(float nota_2b) {
-        this.nota_2b = nota_2b;
+    public void setNota_2bimestre(float nota_2bimestre) {
+        this.nota_2bimestre = nota_2bimestre;
     }
 
-    public float getNota_3b() {
-        return nota_3b;
+    public float getNota_3bimestre() {
+        return nota_3bimestre;
     }
 
-    public void setNota_3b(float nota_3b) {
-        this.nota_3b = nota_3b;
-    }
+    public void setNota_3bimestre(float nota_3bimestre) {
+        this.nota_3bimestre = nota_3bimestre;
 
-    public float getNota_4b() {
-        return nota_4b;
-    }
-
-    public void setNota_4b(float nota_4b) {
-        this.nota_4b = nota_4b;
     }
 
     public float getMedia_final() {

@@ -7,13 +7,22 @@ package model.bean;
 
 /**
  *
- * @author vitor
+ * @author MIcro
  */
 public class Disciplina {
-    private int id;
-    private String nome;
-    private String descricao;
-    private Turma turma;
+    
+    public int id;
+    public String nome;
+    public String descricao;
+    public int professor_id;
+    public int turma_id;
+    
+    public Disciplina(){
+        
+    }
+    public Disciplina(String nome){
+        this.nome = nome;
+    }
 
     public int getId() {
         return id;
@@ -39,13 +48,26 @@ public class Disciplina {
         this.descricao = descricao;
     }
 
-    public Turma getTurma() {
-        return turma;
+    public int getProfessor_id() {
+        return professor_id;
     }
 
-    public void setTurma(Turma turma) {
-        this.turma = turma;
+    public void setProfessor_id(int professor_id) {
+        this.professor_id = professor_id;
+    }
+
+    public int getTurma_id() {
+        return turma_id;
+    }
+
+    public void setTurma_id(int turma_id) {
+        this.turma_id = turma_id;
     }
     
+    public String toString() {
+        return getNome();
+        //return getLetra(); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
