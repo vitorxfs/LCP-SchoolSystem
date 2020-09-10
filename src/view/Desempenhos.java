@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import model.bean.Session;
 
 /**
  *
@@ -26,7 +27,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "desempenhos", catalog = "escola", schema = "")
 @NamedQueries({
-    @NamedQuery(name = "Desempenhos.findAll", query = "SELECT d FROM Desempenhos d")
+    @NamedQuery(name = "Desempenhos.findAll", query = "SELECT d FROM Desempenhos d WHERE d.alunoId = :alunoId ")
     , @NamedQuery(name = "Desempenhos.findById", query = "SELECT d FROM Desempenhos d WHERE d.id = :id")
     , @NamedQuery(name = "Desempenhos.findByAlunoId", query = "SELECT d FROM Desempenhos d WHERE d.alunoId = :alunoId")
     , @NamedQuery(name = "Desempenhos.findByProfessorId", query = "SELECT d FROM Desempenhos d WHERE d.professorId = :professorId")
@@ -50,7 +51,8 @@ public class Desempenhos implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "aluno_id")
-    private int alunoId;
+    private int alunoId =1;
+    
     @Basic(optional = false)
     @Column(name = "professor_id")
     private int professorId;
@@ -99,8 +101,8 @@ public class Desempenhos implements Serializable {
 
     public void setAlunoId(int alunoId) {
         int oldAlunoId = this.alunoId;
-        this.alunoId = alunoId;
-        changeSupport.firePropertyChange("alunoId", oldAlunoId, alunoId);
+        this.alunoId = 1;
+        changeSupport.firePropertyChange("alunoId", oldAlunoId, 1);
     }
 
     public int getProfessorId() {

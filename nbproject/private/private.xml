@@ -5,11 +5,22 @@
         <group>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaCadastroProfessor.java</file>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/DesempenhoDao.java</file>
-            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/TurmaDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/InternalPesquisaAluno.java</file>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/InternalBoletim.java</file>
-            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaAluno.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/InternalAltera.java</file>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Professor.java</file>
-            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Desempenho.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/AlunoDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/AlunoUsuario.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/ProfessorDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/dao/AlunoUsuarioDao.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/Desempenhos.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaCadastroAluno.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Aluno.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaAluno.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/InternalAlteraProf.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaProfessor.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Session.java</file>
+            <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/InternalTurma.java</file>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/view/TelaLogin.java</file>
             <file>file:/C:/Users/MIcro/Documents/GitHub/LCP-SchoolSystem/src/model/bean/Disciplina.java</file>
         </group>

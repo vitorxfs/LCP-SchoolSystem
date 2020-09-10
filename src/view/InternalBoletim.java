@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-
+import model.bean.Session;
 /**
  *
  * @author MIcro
@@ -29,7 +29,7 @@ public class InternalBoletim extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("escola?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        desempenhosQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d");
+        desempenhosQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d WHERE d.alunoId ="+ Session.getSession().getId());
         desempenhosList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : desempenhosQuery.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -38,27 +38,33 @@ public class InternalBoletim extends javax.swing.JInternalFrame {
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${disciplina}"));
         columnBinding.setColumnName("Disciplina");
         columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota1bimestre}"));
         columnBinding.setColumnName("Nota1bimestre");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota2bimestre}"));
         columnBinding.setColumnName("Nota2bimestre");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota3bimestre}"));
         columnBinding.setColumnName("Nota3bimestre");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota4bimestre}"));
         columnBinding.setColumnName("Nota4bimestre");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${mediaFinal}"));
         columnBinding.setColumnName("Media Final");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${frequencia}"));
         columnBinding.setColumnName("Frequencia");
         columnBinding.setColumnClass(Float.class);
+        columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -28,7 +28,7 @@ public class DesempenhoDao {
         con = ConnectionFactory.getConnection();
     }
 
-       /* public List<Desempenho> read(Desempenho d) {
+        public List<Desempenho> read(Desempenho d) {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -68,6 +68,6 @@ public class DesempenhoDao {
 
         return desemp;
 
-    }*/
+    }
     
 }

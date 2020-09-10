@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.bean.Aluno;
 import model.bean.Professor;
+import model.bean.Session;
 
 /**
  *
@@ -48,5 +50,30 @@ public class ProfessorDao {
         }
     }
 
-    
+    public void update(Professor p) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE professores SET nome = ? , email = ?, login = ?, senha = ?, turma_serie = ?, disciplina = ? WHERE id = ?");
+            stmt.setString(1, p.getNome());
+            stmt.setString(2, p.getEmail());
+            stmt.setString(3, p.getLogin());
+            stmt.setString(4, p.getSenha());
+            stmt.setString(5, p.getTurma_serie());
+            stmt.setString(6, p.getDiscplina());
+            stmt.setInt(7, Session.getSession().getId());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+}
 }

@@ -39,38 +39,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="2&#xb0;Bimestre"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3&#xb0;Bimestre"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4&#xb0;Bimestre"/>
-              </Properties>
-            </MenuItem>
           </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Faltas"/>
-          </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar Informa&#xe7;&#xf5;es"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
