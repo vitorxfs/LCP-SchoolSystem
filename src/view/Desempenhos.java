@@ -26,6 +26,7 @@ import model.bean.Session;
  */
 @Entity
 @Table(name = "desempenhos", catalog = "escola", schema = "")
+
 @NamedQueries({
     @NamedQuery(name = "Desempenhos.findAll", query = "SELECT d FROM Desempenhos d WHERE d.alunoId = :alunoId ")
     , @NamedQuery(name = "Desempenhos.findById", query = "SELECT d FROM Desempenhos d WHERE d.id = :id")

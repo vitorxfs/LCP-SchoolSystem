@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.bean.Aluno;
 import model.bean.Desempenho;
+import model.bean.Session;
 
 /**
  *
@@ -69,5 +71,34 @@ public class DesempenhoDao {
         return desemp;
 
     }
+        
+        public void update(Desempenho d) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE desempenhos SET nota_1bimestre = ? ,nota_2bimestre = ?, nota_3bimestre = ?, nota_4bimestre = ?, frequencia = ?, media_final = ? WHERE aluno_id = ? AND professor_id = ?");
+            stmt.setFloat(1, d.getNota_1bimestre());
+            stmt.setFloat(2, d.getNota_2bimestre());
+            stmt.setFloat(3, d.getNota_3bimestre());
+            stmt.setFloat(4, d.getNota_4bimestre());
+            stmt.setFloat(5, d.getFrequencia());
+            stmt.setFloat(6, d.getMedia_final());
+            stmt.setInt(7, d.getAluno_id());
+            stmt.setInt(8, Session.getSession().getId());
+            
+          
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+}
     
 }

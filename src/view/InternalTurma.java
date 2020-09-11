@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import model.bean.Session;
 
 /**
  *
@@ -17,6 +18,8 @@ public class InternalTurma extends javax.swing.JInternalFrame {
     public InternalTurma() {
         initComponents();
     }
+      
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,38 +32,110 @@ public class InternalTurma extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("escola?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        professoresQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Professores p");
+        professoresQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d INNER JOIN Professores p ON p.id = d.professorId INNER JOIN Alunos a ON a.ra = d.alunoId WHERE p.id = 2 ");
         professoresList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : professoresQuery.getResultList();
         alunosQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT a FROM Alunos a");
         alunosList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : alunosQuery.getResultList();
         alunosQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT a FROM Alunos a");
         alunosList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : alunosQuery1.getResultList();
+        desempenhosQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d INNER JOIN Professores p ON p.id = d.professorId INNER JOIN Alunos a ON a.ra = d.alunoId WHERE p.id = 2");
+        desempenhosList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : desempenhosQuery.getResultList();
+        alunosQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT a FROM Alunos a");
+        alunosList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : alunosQuery2.getResultList();
+        desempenhosQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d");
+        desempenhosList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : desempenhosQuery1.getResultList();
+        desempenhosQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Desempenhos d INNER JOIN Alunos a ON a.ra = d.alunoId WHERE d.professorId =  " + Session.getSession().getId());
+        desempenhosList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : desempenhosQuery2.getResultList();
+        alunosQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT a FROM Alunos a INNER JOIN Desempenhos d ON d.alunoId = a.ra WHERE d.professorId = "+ Session.getSession().getId());
+        alunosList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : alunosQuery3.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, professoresList, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turmaSerie}"));
-        columnBinding.setColumnName("Turma Serie");
+        jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, desempenhosList2, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota1bimestre}"));
+        columnBinding.setColumnName("Nota1bimestre");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota2bimestre}"));
+        columnBinding.setColumnName("Nota2bimestre");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota3bimestre}"));
+        columnBinding.setColumnName("Nota3bimestre");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nota4bimestre}"));
+        columnBinding.setColumnName("Nota4bimestre");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${mediaFinal}"));
+        columnBinding.setColumnName("Media Final");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${frequencia}"));
+        columnBinding.setColumnName("Frequencia");
+        columnBinding.setColumnClass(Float.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable1);
+
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, alunosList3, jTable2);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
         columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ra}"));
+        columnBinding.setColumnName("Ra");
+        columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
 
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton1.setText("Alterar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Fechar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(396, 396, 396)
+                        .addComponent(jButton1)
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton2)))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -68,15 +143,42 @@ public class InternalTurma extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new AlteraDesemp().setVisible(true);
+        //jTable2.updateUI();
+        
+        //InternalTurma().setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.util.List<view.Alunos> alunosList;
     private java.util.List<view.Alunos> alunosList1;
+    private java.util.List<view.Alunos> alunosList2;
+    private java.util.List<view.Alunos> alunosList3;
     private javax.persistence.Query alunosQuery;
     private javax.persistence.Query alunosQuery1;
+    private javax.persistence.Query alunosQuery2;
+    private javax.persistence.Query alunosQuery3;
+    private java.util.List<view.Desempenhos> desempenhosList;
+    private java.util.List<view.Desempenhos> desempenhosList1;
+    private java.util.List<view.Desempenhos> desempenhosList2;
+    private javax.persistence.Query desempenhosQuery;
+    private javax.persistence.Query desempenhosQuery1;
+    private javax.persistence.Query desempenhosQuery2;
     private javax.persistence.EntityManager entityManager;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private java.util.List<view.Professores> professoresList;
     private javax.persistence.Query professoresQuery;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
