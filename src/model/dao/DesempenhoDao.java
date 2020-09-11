@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import model.bean.Aluno;
 import model.bean.Desempenho;
 import model.bean.Session;
+import view.Desempenhos;
 
 /**
  *
@@ -29,8 +30,49 @@ public class DesempenhoDao {
     public DesempenhoDao() {
         con = ConnectionFactory.getConnection();
     }
+    
+    public List<Desempenhos> reads(Desempenhos d) {
 
-        public List<Desempenho> read(Desempenho d) {
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Desempenhos> desemp = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM desempenhos WHERE desempenhos.professor_id = ?");
+            stmt.setInt(1, Session.getSession().getId());
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Desempenhos des = new Desempenhos();
+
+                des.setId(rs.getInt("id"));
+                des.setAlunoId(rs.getInt("aluno_id"));
+                des.setNota1bimestre(rs.getFloat("nota_1bimestre"));
+                des.setNota2bimestre(rs.getFloat("nota_2bimestre"));
+                des.setNota3bimestre(rs.getFloat("nota_4bimestre"));
+                des.setNota4bimestre(rs.getFloat("nota_4bimestre"));
+                des.setMediaFinal(rs.getFloat("media_final"));
+                des.setFrequencia(rs.getFloat("frequencia"));
+                
+                desemp.add(des);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DesempenhoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return desemp;
+
+    }
+
+    public List<Desempenho> read(Desempenho d) {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -59,6 +101,7 @@ public class DesempenhoDao {
                 des.setMedia_final(rs.getFloat("media_final"));
                 des.setFrequencia(rs.getFloat("frequencia"));
                 
+                
                 desemp.add(d);
             }
 
@@ -72,7 +115,7 @@ public class DesempenhoDao {
 
     }
         
-        public void update(Desempenho d) {
+    public void update(Desempenho d) {
 
         Connection con = ConnectionFactory.getConnection();
         

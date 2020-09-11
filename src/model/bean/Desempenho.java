@@ -85,7 +85,17 @@ public class Desempenho {
     public void setMedia_final(float media_final) {
         this.media_final = media_final;
     }
-
+    
+    public void calculaMediaFinal(){
+        float n1 = getNota_1bimestre();
+        float n2 = getNota_2bimestre();
+        float n3 = getNota_3bimestre();
+        float n4 = getNota_4bimestre();
+        
+        this.media_final = (float)(n1+n2+n3+n4)/4.0f;
+        System.out.println(this.media_final);
+    }
+    
     public float getFrequencia() {
         return frequencia;
     }

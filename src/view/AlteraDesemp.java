@@ -147,15 +147,12 @@ public class AlteraDesemp extends javax.swing.JFrame {
             float n2 = Float.parseFloat(txt_n2.getText()); 
             float n3 = Float.parseFloat(txt_n3.getText()); 
             float n4 = Float.parseFloat(txt_n4.getText()); 
-            float media;
-            
-            media = (n1+n2+n3+n4);
             
             d.setNota_1bimestre(n1);
             d.setNota_2bimestre(n2);
             d.setNota_3bimestre(n3);
             d.setNota_4bimestre(n4);
-            d.setMedia_final(media);
+            d.calculaMediaFinal();
             d.setAluno_id(Integer.parseInt(txt_ra.getText()));
             d.setFrequencia(Float.parseFloat(txt_freq.getText()));
          

@@ -76,18 +76,12 @@ public class InternalAlterarDesemp extends javax.swing.JInternalFrame {
                         .addComponent(txt_ra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(21, 21, 21))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3))
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -127,7 +121,7 @@ public class InternalAlterarDesemp extends javax.swing.JInternalFrame {
                     .addComponent(txt_freq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jButton1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,25 +129,24 @@ public class InternalAlterarDesemp extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            Desempenho d = new Desempenho();
-            DesempenhoDao dao = new DesempenhoDao();
-            
-            float n1 = Float.parseFloat(txt_n1.getText()); 
-            float n2 = Float.parseFloat(txt_n2.getText()); 
-            float n3 = Float.parseFloat(txt_n3.getText()); 
-            float n4 = Float.parseFloat(txt_n4.getText()); 
-            float media;
-            
-            media = (n1+n2+n3+n4)/4;
-            
-            d.setNota_1bimestre(n1);
-            d.setNota_2bimestre(n2);
-            d.setNota_3bimestre(n3);
-            d.setNota_4bimestre(n4);
-            d.setMedia_final(media);
-            d.setAluno_id(Integer.parseInt(txt_ra.getText()));
-         
-            dao.update(d);
+//            Desempenho d = new Desempenho();
+//            DesempenhoDao dao = new DesempenhoDao();
+//            
+//            float n1 = Float.parseFloat(txt_n1.getText()); 
+//            float n2 = Float.parseFloat(txt_n2.getText()); 
+//            float n3 = Float.parseFloat(txt_n3.getText()); 
+//            float n4 = Float.parseFloat(txt_n4.getText()); 
+//            
+//            d.setNota_1bimestre(n1);
+//            d.setNota_2bimestre(n2);
+//            d.setNota_3bimestre(n3);
+//            d.setNota_4bimestre(n4);
+//            d.calculaMediaFinal();
+//            d.setAluno_id(Integer.parseInt(txt_ra.getText()));
+//            
+//            System.out.println(d.getMedia_final());
+//         
+//            dao.update(d);
              
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -5,9 +5,18 @@
  */
 package view;
 
+import connection.ConnectionFactory;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +27,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import model.bean.Desempenho;
 import model.bean.Session;
+import model.dao.DesempenhoDao;
 
 /**
  *
@@ -85,6 +96,8 @@ public class Desempenhos implements Serializable {
         this.alunoId = alunoId;
         this.professorId = professorId;
     }
+    
+    
 
     public Integer getId() {
         return id;
